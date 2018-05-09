@@ -1,0 +1,10 @@
+az login
+
+az group create --name template101 --location "Australia east"
+az group deployment create --resource-group template101 --template-file 'C:\Staging Script\Staging Azure Templates\template101\template101.json'
+
+#redeploy template with different variables
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+
+#Cleanup 
+az group delete --name template101
